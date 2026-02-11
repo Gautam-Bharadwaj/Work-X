@@ -288,3 +288,73 @@ const FlexiConvertPickerScreen = ({ onBack, onNext }) => {
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
+        numColumns={numColumns}
+        columnWrapperStyle={{ gap }}
+        contentContainerStyle={{
+          paddingHorizontal: sidePadding, paddingTop: spacing.lg, paddingBottom: 100, gap, }}
+        renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
+      />
+      <View style={styles.bottomBarSolid}>
+        <Text style={styles.bottomInfo}>Selected: 3</Text>
+        <PrimaryButton label="Next" onPress={onNext} />
+      </View>
+    </View>
+  );
+};
+
+const FlexiConvertConvertScreen = ({ onBack, onDone }) => {
+  return (
+    <View style={styles.screenContainer}>
+      <Header title="Convert to" onBack={onBack} />
+      <View style={styles.sheet}>
+        <Text style={styles.sheetTitle}>Choose output format</Text>
+        <Text style={styles.sheetSubtitle}>Batch convert with smart compression</Text>
+
+        {[
+          { label: 'PNG', helper: 'Best for quality' }, { label: 'JPEG', helper: 'Smaller file size' }, { label: 'WebP', helper: 'Modern & efficient' }, ].map((opt) => (
+          <TouchableOpacity key={opt.label} style={styles.optionCard} activeOpacity={0.9}>
+            <Text style={styles.optionLabel}>{opt.label}</Text>
+            <Text style={styles.optionHelper}>{opt.helper}</Text>
+          </TouchableOpacity>
+        ))}
+
+        <View style={styles.progressCard}>
+          <Text style={styles.progressTitle}>Converting 8 images…</Text>
+          <View style={styles.progressTrack}>
+            <View style={styles.progressFill} />
+          </View>
+          <Text style={styles.progressMeta}>Est. 3s</Text>
+        </View>
+
+        <PrimaryButton label="Done" onPress={onDone} />
+      </View>
+    </View>
+  );
+};
+
+const PDFMergeScreen = ({ onBack, onMerge }) => {
+  const files = [
+    { id: '1', name: 'Contract.pdf', pages: 4, size: '1.2 MB' }, { id: '2', name: 'Invoice_March.pdf', pages: 2, size: '560 KB' }, { id: '3', name: 'Notes.pdf', pages: 8, size: '2.1 MB' }, ];
+
+  return (
+    <View style={styles.screenContainer}>
+      <Header title="PDF Weaver" onBack={onBack} />
+      <ScrollView contentContainerStyle={styles.mergeList}>
+        {files.map((file, index) => (
+          <View key={file.id} style={styles.pdfCard}>
+            <View style={styles.pdfThumb} />
+            <View style={{ flex: 1 }}>
+              <Text style={styles.pdfTitle}>{file.name}</Text>
+              <Text style={styles.pdfMeta}>
+                {file.pages} pages • {file.size}
+              </Text>
+              <Text style={styles.pdfHint}>Drag to reorder</Text>
+            </View>
+            <Text style={styles.dragHandle}>≡</Text>
+          </View>
+        ))}
+      </ScrollView>
+      <View style={styles.bottomButtonsRow}>
+        <PrimaryButton label="Add PDF" variant="secondary" onPress={() => {}} />
+        <PrimaryButton label="Merge PDFs" onPress={onMerge} />
