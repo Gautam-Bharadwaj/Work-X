@@ -498,3 +498,73 @@ const Header = ({ title, onBack, rightIcons = [], rightText }) => {
           <TouchableOpacity>
             <Text style={styles.headerRightText}>{rightText}</Text>
           </TouchableOpacity>
+        ) : (
+          rightIcons.map((icon) => (
+            <Text key={icon} style={styles.headerIconRight}>
+              {icon}
+            </Text>
+          ))
+        )}
+      </View>
+    </View>
+  );
+};
+
+const PrimaryButton = ({ label, onPress, variant = 'primary' }) => {
+  const isPrimary = variant === 'primary';
+  const isSecondary = variant === 'secondary';
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={0.85}
+      style={[
+        styles.primaryButton, isPrimary && styles.primaryButtonPrimary, isSecondary && styles.primaryButtonSecondary, !isPrimary && !isSecondary && styles.primaryButtonGhost, ]}
+    >
+      <Text
+        style={[
+          styles.primaryButtonLabel, (isSecondary || !isPrimary) && styles.primaryButtonLabelAlt, ]}
+      >
+        {label}
+      </Text>
+    </TouchableOpacity>
+  );
+};
+
+const styles = StyleSheet.create({
+  appRoot: {
+    flex: 1, backgroundColor: colors.background, }, container: {
+    flex: 1, backgroundColor: colors.background, paddingHorizontal: spacing.xl, paddingTop: 44, }, header: {
+    marginBottom: spacing.xxl, }, appTitle: {
+    color: colors.textPrimary, fontSize: 24, fontWeight: '700', }, tagline: {
+    marginTop: spacing.xs, color: colors.textSecondary, fontSize: 13, }, privacyPill: {
+    alignSelf: 'flex-start', marginTop: spacing.sm, borderRadius: 999, paddingHorizontal: spacing.md, paddingVertical: spacing.xs, backgroundColor: '#0F172A', }, privacyText: {
+    color: colors.primary, fontSize: 11, fontWeight: '500', }, grid: {
+    flex: 1, gap: spacing.lg, }, row: {
+    flexDirection: 'row', flex: 1, }, spacer: {
+    width: spacing.lg, }, footerText: {
+    marginBottom: spacing.lg, color: colors.textMuted, fontSize: 11, }, featureCard: {
+    flex: 1, borderRadius: 20, padding: spacing.lg, backgroundColor: colors.surface, }, iconCircle: {
+    width: 36, height: 36, borderRadius: 18, backgroundColor: 'rgba(34, 211, 238, 0.16)', alignItems: 'center', justifyContent: 'center', }, iconLetter: {
+    color: colors.primary, fontWeight: '600', }, featureTitle: {
+    marginTop: spacing.md, color: colors.textPrimary, fontSize: 16, fontWeight: '600', }, featureSubtitle: {
+    marginTop: spacing.xs, color: colors.textSecondary, fontSize: 12, }, screenContainer: {
+    flex: 1, backgroundColor: colors.background, }, headerBar: {
+    flexDirection: 'row', alignItems: 'center', paddingHorizontal: spacing.xl, paddingTop: 44, paddingBottom: spacing.md, }, headerIcon: {
+    color: colors.textPrimary, fontSize: 22, }, headerTitle: {
+    flex: 1, textAlign: 'center', color: colors.textPrimary, fontSize: 16, fontWeight: '600', }, headerRight: {
+    minWidth: 40, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', }, headerIconRight: {
+    color: colors.textSecondary, fontSize: 16, marginLeft: spacing.sm, }, headerRightText: {
+    color: '#F97316', fontSize: 14, fontWeight: '500', }, cameraFrame: {
+    flex: 1, paddingHorizontal: 16, }, glowBox: {
+    flex: 1, borderRadius: 24, borderWidth: 2, borderColor: colors.primary, justifyContent: 'center', alignItems: 'center', backgroundColor: '#020617', }, cameraHint: {
+    color: colors.textSecondary, fontSize: 13, }, bottomBar: {
+    height: 140, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: spacing.xl, }, thumbnail: {
+    width: 44, height: 44, borderRadius: 10, backgroundColor: colors.surfaceAlt, }, captureOuter: {
+    width: 72, height: 72, borderRadius: 36, borderWidth: 2, borderColor: colors.primary, alignItems: 'center', justifyContent: 'center', }, captureInner: {
+    width: 60, height: 60, borderRadius: 30, backgroundColor: colors.textPrimary, }, galleryShortcut: {
+    width: 32, height: 32, borderRadius: 16, backgroundColor: colors.surfaceAlt, alignItems: 'center', justifyContent: 'center', }, galleryIcon: {
+    color: colors.textSecondary, fontSize: 16, }, reviewContent: {
+    flex: 1, paddingHorizontal: spacing.lg, }, pagePreview: {
+    marginTop: spacing.md, borderRadius: 20, backgroundColor: colors.surface, height: 320, alignItems: 'center', justifyContent: 'center', }, previewText: {
+    color: colors.textSecondary, fontSize: 13, }, sectionHeaderRow: {
+    marginTop: spacing.lg, paddingHorizontal: spacing.xs, }, sectionTitle: {
