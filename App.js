@@ -78,3 +78,73 @@ export default function App() {
     case SCREENS.PDF_SPLIT:
       content = (
         <PDFSplitScreen
+          onBack={goBack}
+          onCreate={() => navigate(SCREENS.OUTPUT_SHARE, { type: 'pdf' })}
+        />
+      );
+      break;
+    case SCREENS.QUICK_COMPRESS_PICKER:
+      content = (
+        <QuickCompressPickerScreen
+          onBack={goBack}
+          onNext={() => navigate(SCREENS.QUICK_COMPRESS_SLIDER)}
+        />
+      );
+      break;
+    case SCREENS.QUICK_COMPRESS_SLIDER:
+      content = (
+        <QuickCompressSliderScreen
+          onBack={goBack}
+          onCompress={() => navigate(SCREENS.OUTPUT_SHARE, { type: 'image' })}
+        />
+      );
+      break;
+    case SCREENS.OUTPUT_SHARE:
+      content = <OutputShareScreen onBack={goBack} type={screenParams.type || 'pdf'} />;
+      break;
+    case SCREENS.DASHBOARD:
+    default:
+      content = (
+        <DashboardScreen
+          onInstantScan={() => navigate(SCREENS.INSTANT_SCAN_CAMERA)}
+          onFlexiConvert={() => navigate(SCREENS.FLEXI_PICKER)}
+          onPDFWeaver={() => navigate(SCREENS.PDF_MERGE)}
+          onQuickCompress={() => navigate(SCREENS.QUICK_COMPRESS_PICKER)}
+        />
+      );
+  }
+
+  const animatedStyle = {
+    opacity: transition, transform: [
+      {
+        translateY: transition.interpolate({
+          inputRange: [0, 1], outputRange: [12, 0], }), }, ], };
+
+  return (
+    <SafeAreaView style={styles.appRoot}>
+      <StatusBar barStyle="light-content" />
+      <Animated.View style={[{ flex: 1 }, animatedStyle]}>
+        {content}
+      </Animated.View>
+    </SafeAreaView>
+  );
+}
+
+const DashboardScreen = ({ onInstantScan, onFlexiConvert, onPDFWeaver, onQuickCompress }) => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.appTitle}>PhotonFlow</Text>
+        <Text style={styles.tagline}>Blazing-fast document & image tools</Text>
+        <View style={styles.privacyPill}>
+          <Text style={styles.privacyText}>All processing happens on your device</Text>
+        </View>
+      </View>
+
+      <View style={styles.grid}>
+        <View style={styles.row}>
+          <FeatureCard
+            title="InstantScan"
+            subtitle="Scan docs to clean PDFs"
+            onPress={onInstantScan}
+          />
