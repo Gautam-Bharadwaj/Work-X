@@ -428,3 +428,73 @@ const QuickCompressSliderScreen = ({ onBack, onCompress }) => {
             <Text style={styles.sizeLabel}>Current</Text>
             <Text style={styles.sizeValue}>18.2 MB</Text>
           </View>
+          <View style={styles.sizeColumn}>
+            <Text style={styles.sizeLabel}>Estimated</Text>
+            <Text style={styles.sizeValue}>4.7 MB (−74%)</Text>
+          </View>
+        </View>
+
+        <Text style={styles.sectionTitlePad}>Compression level</Text>
+        <View style={styles.sliderTrack}>
+          <View style={styles.sliderFill} />
+          <View style={styles.sliderThumb} />
+        </View>
+        <View style={styles.sliderLabelsRow}>
+          <Text style={styles.sliderLabel}>High Quality</Text>
+          <Text style={styles.sliderLabel}>Balanced</Text>
+          <Text style={styles.sliderLabel}>Max Compression</Text>
+        </View>
+      </View>
+
+      <View style={styles.bottomButtonsRowSingle}>
+        <PrimaryButton label="Compress" onPress={onCompress} />
+      </View>
+    </View>
+  );
+};
+
+const OutputShareScreen = ({ onBack, type }) => {
+  return (
+    <View style={styles.screenContainer}>
+      <Header title="Ready to share" onBack={onBack} />
+      <View style={styles.outputContent}>
+        <View style={styles.outputPreview}>
+          <Text style={styles.previewText}>{type === 'pdf' ? 'PDF Preview' : 'Image Preview'}</Text>
+          {type === 'pdf' && (
+            <View style={styles.pageCountPill}>
+              <Text style={styles.pageCountText}>5 pages</Text>
+            </View>
+          )}
+        </View>
+        <View style={styles.filenameField}>
+          <Text style={styles.filenameLabel}>File name</Text>
+          <Text style={styles.filenameValue}>
+            {type === 'pdf' ? 'scan_2026_02_11.pdf' : 'images_optimized.zip'}
+          </Text>
+        </View>
+        <Text style={styles.metaRow}>
+          {type === 'pdf' ? 'PDF • 1.2 MB • 5 pages' : 'Images • 4.7 MB total'}
+        </Text>
+
+        <View style={styles.actionsRow}>
+          <PrimaryButton label="Share" onPress={() => {}} />
+          <PrimaryButton label="Save" variant="secondary" onPress={() => {}} />
+          <PrimaryButton label="Open in…" variant="ghost" onPress={() => {}} />
+        </View>
+      </View>
+    </View>
+  );
+};
+
+const Header = ({ title, onBack, rightIcons = [], rightText }) => {
+  return (
+    <View style={styles.headerBar}>
+      <TouchableOpacity onPress={onBack} hitSlop={10}>
+        <Text style={styles.headerIcon}>{'‹'}</Text>
+      </TouchableOpacity>
+      <Text style={styles.headerTitle}>{title}</Text>
+      <View style={styles.headerRight}>
+        {rightText ? (
+          <TouchableOpacity>
+            <Text style={styles.headerRightText}>{rightText}</Text>
+          </TouchableOpacity>
