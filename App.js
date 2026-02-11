@@ -358,3 +358,73 @@ const PDFMergeScreen = ({ onBack, onMerge }) => {
       <View style={styles.bottomButtonsRow}>
         <PrimaryButton label="Add PDF" variant="secondary" onPress={() => {}} />
         <PrimaryButton label="Merge PDFs" onPress={onMerge} />
+      </View>
+    </View>
+  );
+};
+
+const PDFSplitScreen = ({ onBack, onCreate }) => {
+  const pages = Array.from({ length: 12 }).map((_, i) => ({ id: String(i + 1) }));
+  const numColumns = 3;
+  const screenWidth = Dimensions.get('window').width;
+  const sidePadding = spacing.lg;
+  const gap = spacing.sm;
+  const cardWidth = (screenWidth - sidePadding * 2 - gap * (numColumns - 1)) / numColumns;
+
+  const renderItem = ({ item, index }) => (
+    <View
+      style={[
+        styles.pageGridItem, { width: cardWidth, height: cardWidth * 1.3 }, index % 2 === 0 && styles.pageGridItemSelected, ]}
+    >
+      <Text style={styles.pageNumber}>{item.id}</Text>
+    </View>
+  );
+
+  return (
+    <View style={styles.screenContainer}>
+      <Header title="Split PDF" onBack={onBack} />
+      <Text style={styles.sectionTitlePad}>Select pages to include</Text>
+      <FlatList
+        data={pages}
+        keyExtractor={(item) => item.id}
+        numColumns={numColumns}
+        columnWrapperStyle={{ gap }}
+        contentContainerStyle={{
+          paddingHorizontal: sidePadding, paddingTop: spacing.md, paddingBottom: 100, gap, }}
+        renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
+      />
+      <View style={styles.bottomButtonsRow}>
+        <PrimaryButton label="Range 3–10" variant="secondary" onPress={() => {}} />
+        <PrimaryButton label="Create PDF" onPress={onCreate} />
+      </View>
+    </View>
+  );
+};
+
+const QuickCompressPickerScreen = ({ onBack, onNext }) => {
+  return (
+    <View style={styles.screenContainer}>
+      <Header title="QuickCompress" onBack={onBack} />
+      <Text style={styles.sectionTitlePad}>Choose images to optimize</Text>
+      <View style={styles.placeholderBox}>
+        <Text style={styles.previewText}>Image grid placeholder</Text>
+      </View>
+      <View style={styles.bottomBarSolid}>
+        <Text style={styles.bottomInfo}>Selected: 5</Text>
+        <PrimaryButton label="Next" onPress={onNext} />
+      </View>
+    </View>
+  );
+};
+
+const QuickCompressSliderScreen = ({ onBack, onCompress }) => {
+  return (
+    <View style={styles.screenContainer}>
+      <Header title="QuickCompress" onBack={onBack} />
+      <View style={styles.reviewContent}>
+        <View style={styles.sizeCard}>
+          <View style={styles.sizeColumn}>
+            <Text style={styles.sizeLabel}>Current</Text>
+            <Text style={styles.sizeValue}>18.2 MB</Text>
+          </View>
