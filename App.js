@@ -148,3 +148,73 @@ const DashboardScreen = ({ onInstantScan, onFlexiConvert, onPDFWeaver, onQuickCo
             subtitle="Scan docs to clean PDFs"
             onPress={onInstantScan}
           />
+          <View style={styles.spacer} />
+          <FeatureCard
+            title="FlexiConvert"
+            subtitle="Change image formats fast"
+            onPress={onFlexiConvert}
+          />
+        </View>
+        <View style={styles.row}>
+          <FeatureCard
+            title="PDF Weaver"
+            subtitle="Merge & split PDFs"
+            onPress={onPDFWeaver}
+          />
+          <View style={styles.spacer} />
+          <FeatureCard
+            title="QuickCompress"
+            subtitle="Shrink images smartly"
+            onPress={onQuickCompress}
+          />
+        </View>
+      </View>
+
+      <Text style={styles.footerText}>No ads. No uploads. Just speed.</Text>
+    </View>
+  );
+};
+
+const FeatureCard = ({ title, subtitle, onPress }) => (
+  <TouchableOpacity activeOpacity={0.9} onPress={onPress} style={styles.featureCard}>
+    <View style={styles.iconCircle}>
+      <Text style={styles.iconLetter}>{title.charAt(0)}</Text>
+    </View>
+    <Text style={styles.featureTitle}>{title}</Text>
+    <Text style={styles.featureSubtitle}>{subtitle}</Text>
+  </TouchableOpacity>
+);
+
+const InstantScanCameraScreen = ({ onBack, onCaptured }) => {
+  return (
+    <View style={styles.screenContainer}>
+      <Header title="InstantScan" onBack={onBack} rightIcons={['⚡', 'i']} />
+      <View style={styles.cameraFrame}>
+        <View style={styles.glowBox}>
+          <Text style={styles.cameraHint}>Align your document inside the frame</Text>
+        </View>
+      </View>
+      <View style={styles.bottomBar}>
+        <View style={styles.thumbnail} />
+        <TouchableOpacity style={styles.captureOuter} onPress={onCaptured} activeOpacity={0.8}>
+          <View style={styles.captureInner} />
+        </TouchableOpacity>
+        <View style={styles.galleryShortcut}>
+          <Text style={styles.galleryIcon}>🖼</Text>
+        </View>
+      </View>
+    </View>
+  );
+};
+
+const InstantScanReviewScreen = ({ onBack, onAddPage, onFinish }) => {
+  return (
+    <View style={styles.screenContainer}>
+      <Header title="Review scan" onBack={onBack} rightText="Retake" />
+      <View style={styles.reviewContent}>
+        <View style={styles.pagePreview}>
+          <Text style={styles.previewText}>Scanned page preview</Text>
+        </View>
+
+        <View style={styles.sectionHeaderRow}>
+          <Text style={styles.sectionTitle}>Enhance</Text>
