@@ -568,3 +568,72 @@ const styles = StyleSheet.create({
     marginTop: spacing.md, borderRadius: 20, backgroundColor: colors.surface, height: 320, alignItems: 'center', justifyContent: 'center', }, previewText: {
     color: colors.textSecondary, fontSize: 13, }, sectionHeaderRow: {
     marginTop: spacing.lg, paddingHorizontal: spacing.xs, }, sectionTitle: {
+    color: colors.textSecondary, fontSize: 13, fontWeight: '500', }, sectionTitlePad: {
+    marginTop: spacing.lg, marginHorizontal: spacing.lg, color: colors.textSecondary, fontSize: 13, fontWeight: '500', }, enhanceScroll: {
+    marginTop: spacing.sm, }, presetCard: {
+    width: 90, height: 80, borderRadius: 14, backgroundColor: colors.surfaceAlt, marginRight: spacing.sm, padding: spacing.sm, }, presetCardSelected: {
+    borderWidth: 1, borderColor: colors.primary, }, presetThumbnail: {
+    flex: 1, borderRadius: 10, backgroundColor: colors.surface, }, presetLabel: {
+    marginTop: spacing.xs, color: colors.textSecondary, fontSize: 11, }, pageStrip: {
+    flexDirection: 'row', marginTop: spacing.lg, gap: spacing.sm, }, pageThumb: {
+    width: 36, height: 52, borderRadius: 10, backgroundColor: colors.surfaceAlt, }, pageThumbActive: {
+    borderWidth: 1, borderColor: colors.primary, }, bottomButtonsRow: {
+    flexDirection: 'row', paddingHorizontal: spacing.lg, paddingBottom: spacing.lg, gap: spacing.md, }, bottomButtonsRowSingle: {
+    paddingHorizontal: spacing.lg, paddingBottom: spacing.lg, }, primaryButton: {
+    flex: 1, height: 48, borderRadius: 999, alignItems: 'center', justifyContent: 'center', paddingHorizontal: spacing.lg, }, primaryButtonPrimary: {
+    backgroundColor: colors.primary, }, primaryButtonSecondary: {
+    borderWidth: 1, borderColor: colors.borderSubtle, backgroundColor: colors.surfaceAlt, }, primaryButtonGhost: {
+    backgroundColor: 'transparent', }, primaryButtonLabel: {
+    color: '#020617', fontSize: 15, fontWeight: '600', }, primaryButtonLabelAlt: {
+    color: colors.textPrimary, }, segmentedWrapper: {
+    flexDirection: 'row', marginHorizontal: spacing.lg, marginTop: spacing.md, padding: spacing.xs, borderRadius: 999, backgroundColor: colors.surface, }, segmentChip: {
+    flex: 1, height: 30, borderRadius: 999, alignItems: 'center', justifyContent: 'center', }, segmentChipActive: {
+    backgroundColor: 'rgba(34, 211, 238, 0.16)', }, segmentLabel: {
+    color: colors.textMuted, fontSize: 12, }, segmentLabelActive: {
+    color: colors.textPrimary, fontWeight: '500', }, imageItem: {
+    borderRadius: 16, backgroundColor: colors.surfaceAlt, justifyContent: 'flex-end', overflow: 'hidden', }, imageBadge: {
+    alignSelf: 'flex-start', margin: spacing.sm, paddingHorizontal: spacing.sm, paddingVertical: spacing.xs, borderRadius: 999, backgroundColor: 'rgba(0,0,0,0.5)', }, imageBadgeText: {
+    color: colors.textPrimary, fontSize: 10, fontWeight: '500', }, bottomBarSolid: {
+    position: 'absolute', left: 0, right: 0, bottom: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: spacing.lg, paddingVertical: spacing.md, backgroundColor: colors.background, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: colors.borderSubtle, }, bottomInfo: {
+    color: colors.textSecondary, fontSize: 13, }, sheet: {
+    flex: 1, paddingHorizontal: spacing.lg, paddingTop: spacing.lg, }, sheetTitle: {
+    color: colors.textPrimary, fontSize: 18, fontWeight: '600', }, sheetSubtitle: {
+    marginTop: spacing.xs, color: colors.textSecondary, fontSize: 13, }, optionCard: {
+    marginTop: spacing.lg, borderRadius: 18, backgroundColor: colors.surfaceAlt, padding: spacing.lg, }, optionLabel: {
+    color: colors.textPrimary, fontSize: 15, fontWeight: '500', }, optionHelper: {
+    marginTop: spacing.xs, color: colors.textSecondary, fontSize: 12, }, progressCard: {
+    marginTop: spacing.lg, borderRadius: 16, backgroundColor: colors.surface, padding: spacing.lg, }, progressTitle: {
+    color: colors.textPrimary, fontSize: 14, marginBottom: spacing.sm, }, progressTrack: {
+    height: 6, borderRadius: 3, backgroundColor: colors.surfaceAlt, overflow: 'hidden', }, progressFill: {
+    width: '60%', height: '100%', backgroundColor: colors.primary, }, progressMeta: {
+    marginTop: spacing.sm, color: colors.textSecondary, fontSize: 12, }, mergeList: {
+    paddingHorizontal: spacing.lg, paddingTop: spacing.md, paddingBottom: 120, gap: spacing.md, }, pdfCard: {
+    flexDirection: 'row', alignItems: 'center', borderRadius: 18, backgroundColor: colors.surface, padding: spacing.lg, marginBottom: spacing.md, }, pdfThumb: {
+    width: 42, height: 58, borderRadius: 10, backgroundColor: colors.surfaceAlt, marginRight: spacing.md, }, pdfTitle: {
+    color: colors.textPrimary, fontSize: 14, fontWeight: '500', }, pdfMeta: {
+    marginTop: spacing.xs, color: colors.textSecondary, fontSize: 12, }, pdfHint: {
+    marginTop: spacing.xs, color: colors.textMuted, fontSize: 11, }, dragHandle: {
+    marginLeft: spacing.md, color: colors.textSecondary, fontSize: 18, }, pageGridItem: {
+    borderRadius: 12, backgroundColor: colors.surfaceAlt, alignItems: 'center', justifyContent: 'center', }, pageGridItemSelected: {
+    borderWidth: 1, borderColor: colors.primary, }, pageNumber: {
+    color: colors.textPrimary, fontSize: 14, fontWeight: '600', }, placeholderBox: {
+    marginHorizontal: spacing.lg, marginTop: spacing.lg, borderRadius: 20, backgroundColor: colors.surfaceAlt, height: 260, alignItems: 'center', justifyContent: 'center', }, sizeCard: {
+    marginTop: spacing.lg, borderRadius: 18, backgroundColor: colors.surface, padding: spacing.lg, flexDirection: 'row', justifyContent: 'space-between', }, sizeColumn: {
+    flex: 1, }, sizeLabel: {
+    color: colors.textSecondary, fontSize: 11, }, sizeValue: {
+    marginTop: spacing.xs, color: colors.textPrimary, fontSize: 16, fontWeight: '600', }, sliderTrack: {
+    marginTop: spacing.lg, marginHorizontal: spacing.lg, height: 6, borderRadius: 3, backgroundColor: colors.surfaceAlt, }, sliderFill: {
+    width: '55%', height: '100%', borderRadius: 3, backgroundColor: colors.primary, }, sliderThumb: {
+    position: 'absolute', right: '40%', top: -8, width: 24, height: 24, borderRadius: 12, backgroundColor: colors.primary, }, sliderLabelsRow: {
+    flexDirection: 'row', justifyContent: 'space-between', marginTop: spacing.sm, marginHorizontal: spacing.lg, }, sliderLabel: {
+    color: colors.textSecondary, fontSize: 11, }, outputContent: {
+    flex: 1, paddingHorizontal: spacing.lg, paddingTop: spacing.lg, }, outputPreview: {
+    width: 180, height: 240, borderRadius: 24, backgroundColor: colors.surface, alignSelf: 'center', alignItems: 'center', justifyContent: 'center', marginTop: spacing.lg, }, pageCountPill: {
+    position: 'absolute', top: spacing.sm, right: spacing.sm, borderRadius: 999, paddingHorizontal: spacing.sm, paddingVertical: spacing.xs, backgroundColor: 'rgba(0,0,0,0.55)', }, pageCountText: {
+    color: colors.textPrimary, fontSize: 11, }, filenameField: {
+    marginTop: spacing.xxl, }, filenameLabel: {
+    color: colors.textSecondary, fontSize: 12, }, filenameValue: {
+    marginTop: spacing.xs, color: colors.textPrimary, fontSize: 15, fontWeight: '500', }, metaRow: {
+    marginTop: spacing.sm, color: colors.textSecondary, fontSize: 12, }, actionsRow: {
+    flexDirection: 'row', gap: spacing.sm, marginTop: spacing.xxl, },
+});
