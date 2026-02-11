@@ -218,3 +218,73 @@ const InstantScanReviewScreen = ({ onBack, onAddPage, onFinish }) => {
 
         <View style={styles.sectionHeaderRow}>
           <Text style={styles.sectionTitle}>Enhance</Text>
+        </View>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.enhanceScroll}
+          contentContainerStyle={{ paddingHorizontal: spacing.lg }}
+        >
+          {['Magic Color', 'Grayscale', 'B&W', 'Soft'].map((preset, index) => (
+            <View key={preset} style={[styles.presetCard, index === 0 && styles.presetCardSelected]}>
+              <View style={styles.presetThumbnail} />
+              <Text style={styles.presetLabel}>{preset}</Text>
+            </View>
+          ))}
+        </ScrollView>
+
+        <View style={styles.pageStrip}>
+          {Array.from({ length: 3 }).map((_, idx) => (
+            <View
+              key={idx}
+              style={[styles.pageThumb, idx === 0 && styles.pageThumbActive]}
+            />
+          ))}
+        </View>
+      </View>
+
+      <View style={styles.bottomButtonsRow}>
+        <PrimaryButton label="Add Page" variant="secondary" onPress={onAddPage} />
+        <PrimaryButton label="Finish" onPress={onFinish} />
+      </View>
+    </View>
+  );
+};
+
+const FlexiConvertPickerScreen = ({ onBack, onNext }) => {
+  const data = Array.from({ length: 18 }).map((_, i) => ({ id: String(i) }));
+  const numColumns = 3;
+  const screenWidth = Dimensions.get('window').width;
+  const sidePadding = spacing.lg;
+  const gap = spacing.sm;
+  const cardWidth = (screenWidth - sidePadding * 2 - gap * (numColumns - 1)) / numColumns;
+
+  const renderItem = ({ item }) => (
+    <View style={[styles.imageItem, { width: cardWidth, height: cardWidth }]}>
+      <View style={styles.imageBadge}>
+        <Text style={styles.imageBadgeText}>JPG</Text>
+      </View>
+    </View>
+  );
+
+  return (
+    <View style={styles.screenContainer}>
+      <Header title="FlexiConvert" onBack={onBack} rightIcons={['⋮']} />
+      <View style={styles.segmentedWrapper}>
+        {['All', 'Photos', 'Screenshots', 'Recent'].map((label, index) => (
+          <View
+            key={label}
+            style={[styles.segmentChip, index === 0 && styles.segmentChipActive]}
+          >
+            <Text
+              style={[
+                styles.segmentLabel, index === 0 && styles.segmentLabelActive, ]}
+            >
+              {label}
+            </Text>
+          </View>
+        ))}
+      </View>
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item.id}
